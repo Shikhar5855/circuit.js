@@ -1,0 +1,38 @@
+<div *ngIf="this.data?.length > 0" style="padding: 4px">
+  <form>
+    <div>
+      <div class="input-form">
+        Device Name
+      </div>
+      <div>
+        <app-input-box [(value)]="this.inpuObj.label_name" (valueChange)="updateDeviceName()"></app-input-box>
+      </div>
+    </div>
+
+    <div>
+      <div class="input-form">
+        Device Type
+      </div>
+      <div>
+        <mat-form-field class="mat-input-box">
+          <select
+              id="io_device_type"
+              matNativeControl
+              [(ngModel)]="this.inpuObj.device_type"
+              (change)="updatePortType($event)"
+              [name]="'io_port_type'"
+           >
+                <option [value]="this.port_type.IN">In</option>
+                <option [value]="this.port_type.OUT">Out</option>
+                <option [value]="this.port_type.IN_OUT">In-Out</option>
+                <option [value]="this.port_type.POWER">Power</option>
+                <option [value]="this.port_type.GROUND">Ground</option>
+                <option [value]="this.port_type.VDDI">VDDI</option>
+                <option [value]="this.port_type.VSSI">VSSI</option>
+            </select>
+        </mat-form-field>
+        <!-- <app-input-box [(value)]="this.inpuObj.device_name" (valueChange)="updateDeviceName()"></app-input-box> -->
+      </div>
+    </div>
+  </form>
+</div>

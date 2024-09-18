@@ -1,0 +1,63 @@
+@import '/src/variable.scss';
+
+.bg-dark {
+  border: 1px solid $color-black-p;
+}
+
+.top-tool {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .tt-icon {
+    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    .tt-logo {
+      width: 40px;
+      margin-left: 0.5rem;
+    }
+    .tt-logo-text {
+      width: 150px;
+      font-size: 18px;
+      color: $color-gray-p;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      font-family: cursive;
+    }
+    .tt-box {
+      display: flex;
+      height: 25px;
+      width: 25px;
+      padding: 2.5px;
+      margin: 0px 0.5rem;
+      color: #fff;
+      cursor: pointer;
+      .tt-tool-img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+      .tt-tool-icon {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color: $color-gray-p;
+        font-size: 16px;
+      }
+      .tt-tool-icon-disable {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color: $color-gray-s;
+        font-size: 16px;
+        cursor:auto;
+      }
+    }
+  }
+}

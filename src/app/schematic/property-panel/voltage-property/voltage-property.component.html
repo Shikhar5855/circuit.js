@@ -1,0 +1,81 @@
+<div style="padding: 4px">
+  <form>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Device Name</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.device_name"
+          (valueChange)="updateDeviceName('device_name', this.inpuObj.device_name)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div>
+      <div class="input-form">Device Type</div>
+      <div>
+        <mat-form-field class="mat-input-box">
+        <select
+          matNativeControl
+          id="volyage-type"
+          [(ngModel)]="this.inpuObj.voltage_wave_type"
+          name="voltage_type"
+          (change)="changeVoltageType('voltage_wave_type', $event)"
+          style="color: #fff;"
+        >
+          <option value="0">DC</option>
+          <option value="1">AC</option>
+          <option value="2">SQUARE</option>
+          <option value="5">PULSE</option>
+        </select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div style="padding: 0.25rem">
+      <div *ngIf="this.inpuObj.voltage_wave_type != '5'" class="input-form">Max Voltage</div>
+      <div *ngIf="this.inpuObj.voltage_wave_type == '5'" class="input-form">Amplitude</div>
+
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.voltage_max"
+          (valueChange)="updateDeviceName('voltage_max', this.inpuObj.voltage_max)"
+        ></app-input-box>
+      </div>
+    </div>
+
+    <div *ngIf="this.inpuObj.voltage_wave_type != '0'" style="padding: 0.25rem">
+      <div class="input-form">DC Offset</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.voltage_offset"
+          (valueChange)="updateDeviceName('voltage_offset', this.inpuObj.voltage_offset)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div *ngIf="this.inpuObj.voltage_wave_type != '0'" style="padding: 0.25rem">
+      <div class="input-form">Frequency (Hz)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.voltage_frequency"
+          (valueChange)="updateDeviceName('voltage_frequency', this.inpuObj.voltage_frequency)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div *ngIf="this.inpuObj.voltage_wave_type != '0'" style="padding: 0.25rem">
+      <div class="input-form">Phase Offset (degrees)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.voltage_phase_offset"
+          (valueChange)="updateDeviceName('voltage_phase_offset', this.inpuObj.voltage_phase_offset)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div *ngIf="this.inpuObj.voltage_wave_type != '0' && this.inpuObj.voltage_wave_type != '1' " style="padding: 0.25rem">
+      <div class="input-form">Duty Cycle</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.voltage_duty_cycle"
+          (valueChange)="updateDeviceName('voltage_duty_cycle', this.inpuObj.voltage_duty_cycle)"
+        ></app-input-box>
+      </div>
+    </div>
+  </form>
+</div>

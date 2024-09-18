@@ -1,0 +1,30 @@
+@import '/src/mixin.scss';
+@import '/src/variable.scss';
+
+$top-height: 50px;
+
+.top-menu {
+  height: $top-height;
+  width: 100%;
+  background: $color-black-p1;
+}
+.side-menu {
+  height: calc(100vh - $top-height);
+  width: 150px;
+  background: $color-black-p1;
+}
+.property-panel {
+  width: 200px;
+  height: calc(100vh - $top-height);
+  background: $color-black-p1;
+}
+.canvas-panel {
+  width: 100%;
+  height: calc(100vh - $top-height);
+}
+
+.main-panel {
+  width: 100%;
+  height: calc(100vh - $top-height);
+}
+

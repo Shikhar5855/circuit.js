@@ -1,0 +1,10 @@
+1. Copy app dir/files of src/app/schematic
+2. link all js and css file in index.html
+    for example check src/index.html
+3.  add  module SchematicModule('./schematic/schematic.module') in your root module
+4. load module in routing   
+  ex. {
+    path: '',
+    loadChildren: () => import('../app/schematic/schematic.module').then(m => m.SchematicModule)
+  }
+5. after run in local url http://localhost:4200/schematic you get schematic page 

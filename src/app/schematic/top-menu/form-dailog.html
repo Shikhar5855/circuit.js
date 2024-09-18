@@ -1,0 +1,23 @@
+<!-- <h2 mat-dialog-title>Circuit Detail</h2> -->
+<div *ngIf="type=='save_cell' || type=='only_cell_name'">
+<mat-dialog-content style="padding: 8px;">
+  <mat-form-field class="mat-form-field">
+    <mat-label>Cell Name</mat-label>
+    <input [ngClass]="'error'" matInput [(ngModel)]="data.cell_name" (input)="alphNum($event)">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions style="padding: 8px;display: flex;justify-content: space-between;">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="saveData()">Save</button>
+</mat-dialog-actions>
+</div>
+
+<div *ngIf="type=='clear'">
+  <mat-dialog-content style="padding: 8px;">
+      <div>Are you sure you want to clear this screen?</div>
+  </mat-dialog-content>
+  <mat-dialog-actions style="padding: 8px;display: flex;justify-content: space-between;">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="clearData()">Clear</button>
+  </mat-dialog-actions>
+  </div>

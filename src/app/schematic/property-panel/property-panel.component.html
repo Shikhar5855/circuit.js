@@ -1,0 +1,51 @@
+<div class="menu-head" >
+  <div class="text" [class]="isPortActive == 0 ? 'item-seleted' : ''" (click)="isPortActive = 0">
+    <span>Property</span>
+  </div>
+  <div class="text" [class]="isPortActive == 1 ? 'item-seleted' : ''" (click)="isPortActive = 1">
+    <span>Nets/Ports</span>
+  </div>
+</div>
+<div *ngIf="isDeviceSeleted">
+  <div *ngIf="isPortActive == 0 && device_id > 0">
+    <app-voltage-property
+      *ngIf="device_type == 'V'"
+      [data]="this.input"
+      [cloneElm]="this.cloneElm"
+    ></app-voltage-property>
+    <app-capacitor-property
+      *ngIf="device_type == 'C'"
+      [data]="this.input"
+      [cloneElm]="this.cloneElm"
+    ></app-capacitor-property>
+    <app-inductor-property
+      *ngIf="device_type == 'I'"
+      [data]="this.input"
+      [cloneElm]="this.cloneElm"
+    ></app-inductor-property>
+    <app-nmos-property *ngIf="device_type == 'XM'" [data]="this.input" [cloneElm]="this.cloneElm"></app-nmos-property>
+    <app-npn-property
+      *ngIf="device_type == 'XT' || device_type == 'D'"
+      [cloneElm]="this.cloneElm"
+      [data]="this.input"
+    ></app-npn-property>
+    <app-gate-property
+      [did]="device_id"
+      [type]="device_type"
+      *ngIf="device_type == 'N' || device_type == 'G'"
+      [cloneElm]="this.cloneElm"
+      [data]="this.input"
+    ></app-gate-property>
+    <app-risitor-property
+      *ngIf="device_type == 'R'"
+      [cloneElm]="this.cloneElm"
+      [data]="this.input"
+    ></app-risitor-property>
+    <app-wire-property *ngIf="device_type == 'P'" [cloneElm]="this.cloneElm" [data]="this.input"></app-wire-property>
+  </div>
+  <app-port-detail
+    *ngIf="isPortActive == 1 && device_id > 0 && (device_type != 'W')"
+    [data]="this.ports"
+    [external]="this.externalPower"
+  ></app-port-detail>
+</div>

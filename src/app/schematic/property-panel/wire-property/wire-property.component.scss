@@ -1,0 +1,31 @@
+@import '/src/variable.scss';
+
+.input-form {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.input-box {
+  outline: none;
+}
+
+.input-button {
+  margin-top: 1rem;
+  width: 100%;
+  background: $color-black-p;
+  color: $color-gray-p;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+::ng-deep {
+  div#mat-select-2-panel {
+    height: auto;
+    background: white !important;
+  }
+}
+
+#io_device_type option{
+  color: #000;
+}

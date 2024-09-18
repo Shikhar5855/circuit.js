@@ -1,0 +1,75 @@
+<div style="padding: 4px">
+  <form>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Device Name</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.device_name"
+          (valueChange)="updateDeviceName('device_name', this.inpuObj.device_name)"
+        ></app-input-box>
+      </div>
+    </div>
+
+    <div *ngIf="type == 'G'" style="padding: 0.5rem">
+      <div class="input-form"># of Inputs</div>
+      <div>
+        <mat-form-field  class="mat-input-box">
+        <select
+          matNativeControl
+          id="gate-input-count"
+          [(ngModel)]="this.inpuObj.no_of_input"
+          (change)="changeNoOfInput('no_of_input', $event)"
+          name="no_of_input"
+        >
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <div style="padding: 0.25rem;">
+            <div class="input-form">High Logic Voltage</div>
+            <div>
+                <app-input-box [(value)]="this.inpuObj.high_logic_voltage" (valueChange)="updateDeviceName('high_logic_voltage',this.inpuObj.high_logic_voltage)"></app-input-box>
+            </div>
+        </div> -->
+
+    <div style="padding: 0.25rem">
+      <div class="input-form">Width (NMOS)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_width_n"
+          (valueChange)="updateDeviceName('transistor_width_n', this.inpuObj.transistor_width_n)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Width (PMOS)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_width_p"
+          (valueChange)="updateDeviceName('transistor_width_p', this.inpuObj.transistor_width_p)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Length (l)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_length"
+          (valueChange)="updateDeviceName('transistor_length', this.inpuObj.transistor_length)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Multiplier (m)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_multiplier"
+          (valueChange)="updateDeviceName('transistor_multiplier', this.inpuObj.transistor_multiplier)"
+        ></app-input-box>
+      </div>
+    </div>
+  </form>
+</div>

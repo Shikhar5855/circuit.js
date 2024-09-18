@@ -1,0 +1,173 @@
+<div class="top-tool">
+  <div class="tt-icon">
+    <div class="tt-logo">
+      <img [src]="logo_url" style="height: 30px; width: 30px; object-fit: contain" />
+    </div>
+    <div class="tt-logo-text" style="width: 150px; margin: 0.5rem">{{ logo_name }}</div>
+    <div style="display: flex; justify-content: flex-start; width: 100%">
+      <div class="bg-dark" style="display: flex; justify-content: flex-start">
+        <div mat-raised-button matTooltip="Select" class="tt-box" (click)="addDevice(cmd.SELECT)">
+          <!-- <i class="tt-tool-icon fa fa-sharp fa-solid fa-plus"></i> -->
+          <!-- <i class="tt-tool-icon fa fa-solid fa-mouse-pointer"></i> -->
+          <span class="tt-tool-icon material-symbols-outlined">web_traffic</span>
+          <!-- <img class="tt-tool-img" src="/assets/img/icon_grab.png" /> -->
+        </div>
+        <div mat-raised-button matTooltip="Clear" class="tt-box" (click)="openDialog('clear')">
+          <!-- <i title="clear" class="tt-tool-icon fa fa-solid fa-close"></i> -->
+          <span  class="tt-tool-icon material-symbols-outlined"> disabled_by_default </span>
+        </div>
+        <!-- <div  class="tt-box" (click)="setCurrentStatus()">
+                    <span title="run" *ngIf="!currentStatus"  (click)="startSim()" class="tt-tool-icon material-symbols-outlined">
+                      play_arrow
+                      </span>
+                      <span title="stop" *ngIf="currentStatus" class="tt-tool-icon material-symbols-outlined">
+                        stop
+                        </span>
+                  </div> -->
+
+        <div mat-raised-button matTooltip="Export" class="tt-box" (click)="getNetlistData()">
+          <span  class="tt-tool-icon material-symbols-outlined"> download </span>
+          <!-- <i  class="tt-tool-icon fa fa-solid fa-cloud-download"></i> -->
+        </div>
+        <div  class="tt-box" (click)="setVisibility('U')">
+
+          <!-- <i *ngIf="isDevice" class="tt-tool-icon fa fa-solid fa-eye"></i>
+                    <i *ngIf="!isDevice" class="tt-tool-icon fa fa-solid fa-eye-slash"></i> -->
+          <!-- <span mat-raised-button matTooltip="Upper case export" *ngIf="isUpperCase" class="tt-tool-icon material-symbols-outlined"> visibility </span>
+          <span mat-raised-button matTooltip="Lower case export" *ngIf="!isUpperCase" class="tt-tool-icon material-symbols-outlined"> visibility_off </span>
+          <span style="display: flex; justify-content: center; flex-direction: column; margin-left: 0.25rem">U</span> -->
+          <span mat-raised-button matTooltip="Lowercase Export" *ngIf="!isUpperCase" class="tt-tool-icon material-symbols-outlined">
+            check_box_outline_blank
+            </span>
+            <span mat-raised-button matTooltip="Uppercase Export" *ngIf="isUpperCase" class="tt-tool-icon material-symbols-outlined">
+               check_box
+              </span>
+              <span style="display: flex; justify-content: center; flex-direction: column; margin-left: 0.25rem">U</span>
+        </div>
+
+        <!-- <div class="tt-box" (click)="getNetlistData()">
+                    <span title="export" class="tt-tool-icon material-symbols-outlined">
+                      system_update_alt
+                      </span>
+                  </div> -->
+
+                  <div>
+                    <textarea [(ngModel)]="circuitText" placeholder="Enter circuit data here"></textarea></div>
+                    <div>
+                    <button classname="import-btns" (click)="importCircuitFromText()">Import Circuit</button>
+                  </div>
+        <div mat-raised-button matTooltip="Visible Net"  class="tt-box" (click)="setVisibility('n')">
+          <span *ngIf="isNode" class="tt-tool-icon material-symbols-outlined"> visibility </span>
+          <span *ngIf="!isNode" class="tt-tool-icon material-symbols-outlined"> visibility_off </span>
+          <!-- <i  *ngIf="isNode" class="tt-tool-icon fa fa-solid fa-eye"></i>
+                    <i *ngIf="!isNode" class="tt-tool-icon fa fa-solid fa-eye-slash"></i> -->
+          <span style="display: flex; justify-content: center; flex-direction: column; margin-left: 0.25rem">N</span>
+        </div>
+        <div mat-raised-button matTooltip="Visible Device"  class="tt-box" (click)="setVisibility('d')">
+          <!-- <i *ngIf="isDevice" class="tt-tool-icon fa fa-solid fa-eye"></i>
+                    <i *ngIf="!isDevice" class="tt-tool-icon fa fa-solid fa-eye-slash"></i> -->
+          <span *ngIf="isDevice" class="tt-tool-icon material-symbols-outlined"> visibility </span>
+          <span *ngIf="!isDevice" class="tt-tool-icon material-symbols-outlined"> visibility_off </span>
+          <span style="display: flex; justify-content: center; flex-direction: column; margin-left: 0.25rem">D</span>
+        </div>
+        <div mat-raised-button matTooltip="Visible Property"  class="tt-box" (click)="setVisibility('p')">
+          <span *ngIf="isProperty" class="tt-tool-icon material-symbols-outlined"> visibility </span>
+          <span *ngIf="!isProperty" class="tt-tool-icon material-symbols-outlined"> visibility_off </span>
+          <!-- <i *ngIf="isProperty" class="tt-tool-icon fa fa-solid fa-eye"></i>
+                    <i *ngIf="!isProperty" class="tt-tool-icon fa fa-solid fa-eye-slash"></i> -->
+          <span style="display: flex; justify-content: center; flex-direction: column; margin-left: 0.25rem">P </span>
+        </div>
+        <div mat-raised-button matTooltip="Visible Cellname" class="tt-box" (click)="setVisibility('c')">
+          <!-- <i *ngIf="isDevice" class="tt-tool-icon fa fa-solid fa-eye"></i>
+                    <i *ngIf="!isDevice" class="tt-tool-icon fa fa-solid fa-eye-slash"></i> -->
+          <span *ngIf="isCellName" class="tt-tool-icon material-symbols-outlined"> visibility </span>
+          <span *ngIf="!isCellName" class="tt-tool-icon material-symbols-outlined"> visibility_off </span>
+          <span style="display: flex; justify-content: center; flex-direction: column; margin-left: 0.25rem">C</span>
+        </div>
+
+        <div mat-raised-button matTooltip="Undo" class="tt-box" (click)="doUndo()">
+          <span [ngClass]="isUndo?'tt-tool-icon':'tt-tool-icon-disable'" class="material-symbols-outlined"> undo </span>
+        </div>
+
+        <div mat-raised-button matTooltip="Redo" class="tt-box" (click)="doRedo()">
+          <span [ngClass]="isRedo?'tt-tool-icon':'tt-tool-icon-disable'" class="material-symbols-outlined"> redo </span>
+        </div>
+      </div>
+
+      <div
+        [ngStyle]="(isDeviceSeleted)?{display:'flex'}:{display:'none'}"
+        class="bg-dark"
+        style="display: flex; justify-content: flex-start;margin-left:1rem;"
+      >
+        <div mat-raised-button matTooltip="Rotate Clockwise" matTooltipPosition="below"  class="tt-box" (click)="rotateLeft()">
+          <span    class="tt-tool-icon material-symbols-outlined"> rotate_90_degrees_cw </span>
+          <!-- <i title="rotate 90deg left" class="tt-tool-icon fa fa-solid fa-rotate-right"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Rotate Anti-Clockwise" class="tt-box" (click)="rotatRight()">
+          <span  class="tt-tool-icon material-symbols-outlined"> rotate_90_degrees_ccw </span>
+          <!-- <i title="rotate 90deg right" class="tt-tool-icon fa fa-solid fa-rotate-left"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Delete" class="tt-box" (click)="deleteEle()">
+          <span  class="tt-tool-icon material-symbols-outlined"> delete </span>
+          <!-- <i title="delete" class="tt-tool-icon fa fa-solid fa-trash"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Cut" class="tt-box" (click)="copyCutEle(false)">
+          <span  class="tt-tool-icon material-symbols-outlined"> cut </span>
+          <!-- <i title="delete" class="tt-tool-icon fa fa-solid fa-trash"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Copy" class="tt-box" (click)="copyCutEle(true)">
+          <span  class="tt-tool-icon material-symbols-outlined"> content_copy </span>
+          <!-- <i title="delete" class="tt-tool-icon fa fa-solid fa-trash"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Paste" class="tt-box" (click)="pasteEle()">
+          <span [ngClass]="toolBarStatus.paste?'tt-tool-icon':'tt-tool-icon-disable'"  class="tt-tool-icon material-symbols-outlined"> content_paste </span>
+          <!-- <i title="delete" class="tt-tool-icon fa fa-solid fa-trash"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Duplicate" class="tt-box" (click)="dublicateEle()">
+          <span  class="tt-tool-icon material-symbols-outlined"> tab_duplicate </span>
+          <!-- <i title="delete" class="tt-tool-icon fa fa-solid fa-trash"></i> -->
+        </div>
+        <div mat-raised-button matTooltip="Swap Terminal" class="tt-box" (click)="swapTerminal()">
+          <span  class="tt-tool-icon material-symbols-outlined"> swap_horiz </span>
+          <!-- <i title="delete" class="tt-tool-icon fa fa-solid fa-trash"></i> -->
+        </div>
+        <div  mat-raised-button matTooltip="View Waveform" class="tt-box" (click)="viewScope(toolBarStatus.scope)">
+          <span [ngClass]="toolBarStatus.scope>0?'tt-tool-icon':'tt-tool-icon-disable'"  class="tt-tool-icon material-symbols-outlined"> airwave </span>
+        </div>
+
+
+        <div mat-raised-button matTooltip="Edit Cell" *ngIf="deviceComponentId" class="tt-box" (click)="editEle()">
+             <span class="material-symbols-outlined">edit</span>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: flex-end; width: 100%">
+        <div
+          style="display: flex; justify-content: center; flex-direction: column; height: 100%; padding-right: 0.5rem"
+        >
+        <div mat-raised-button matTooltip="Save" title="Save" class="tt-box" (click)="openDialog('save_cell')">
+          <span class="material-symbols-outlined">add_task</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  id="graph_show"
+  style="
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    top: 0px;
+    z-index: 5;
+    display: none;
+    background: #fff;
+    animation: 1s;
+    height: 100%;
+  "
+>
+  <div id="container" style="position: relative; width: 100%">
+    <canvas id="acquisitions"></canvas>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+@import '/src/variable.scss';
+.menu-head {
+  height: 0px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid $color-black-s;
+  background: $color-black-p;
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 80px;
+    height: 100%;
+    font-size: 14px;
+    background: $color-black-p;
+    font-family: $font-family-p;
+    color: $color-gray-s;
+    font-weight: 600;
+  }
+
+  .icon {
+    height: 20px;
+    width: 20px;
+    padding: 4px;
+    object-fit: contain;
+  }
+}
+
+.tool-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  .box:hover {
+    background: $selected-color !important;
+  }
+  .box {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    padding: 4px;
+    margin: 0.25rem;
+    border: 1px solid $color-gray-s;
+    background: $color-black-p;
+    .tool-icon {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    .tool-text {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: $color-gray-p;
+      font-size: 10px;
+      height: 100%;
+    }
+  }
+}
+
+.a-link{
+  padding:2px 4px;
+  color: $color-gray-p;
+  text-decoration: underline;
+  cursor: pointer;
+}

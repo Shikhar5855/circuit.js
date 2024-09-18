@@ -1,0 +1,241 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./mixin.scss";
+@import "./variable.scss";
+
+
+body{
+    background: $color-black-p;
+    margin: 0;
+    padding: 0;
+}
+
+.item-seleted{
+    background: $selected-color !important;
+}
+.disabled {
+    color: lightgray;
+}
+.topSpace {
+    margin-top: 12px;
+}
+.cursorPointer {
+cursor: default;
+}
+.cursorCross {
+cursor: crosshair;
+}
+
+.cursorSplitter {
+cursor: row-resize;
+}
+
+.gwt-MenuItem-disabled {
+    color: lightgray;
+}
+.offScreen {
+    position: absolute;
+    right: 101%;
+    overflow: hidden;
+}
+.gwt-Frame{
+    scrolling:"no";
+border: 0px !important;
+}
+
+.gwt-MenuItem {
+    font-size: 12px !important;
+}
+
+.gwt-MenuBar-horizontal {
+    font-size: 12px !important;
+    }
+
+.gwt-Label-selected {
+    font-size: 1.3em;
+    font-weight: 700;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.gwt-Label-1off {
+    color: DarkGray;
+}
+
+.gwt-Label-2off {
+    font-size:0.8em;
+    color: LightGray;
+}
+
+.gwt-Label-current {
+}
+
+.gwt-Button.chbut {
+    padding:3px;
+    margin: 3px;
+}
+
+.gwt-Button.chbut.chsel {
+    font-weight: bold;
+}
+
+.gwt-Button.chbut-black {
+    background: black;
+    color: white;
+}
+
+.gwt-Button.chbut-white {
+    background: white;
+    color: black;
+}
+
+.gwt-TextBox.scalebox {
+    width: 100px;
+}
+
+.gwt-Button.expand-but {
+    line-height: 0;
+    font-size: 13px;
+    margin-right: 5px;
+    border-radius:0px;
+    display: inline-block;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom:1px;
+    padding-top:0;
+    margin-bottom:1px;
+    background:gray;
+    color:white;
+}
+
+.topButton-red {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left:5px;
+    padding: 5px 7px;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    cursor: hand;
+    font-size: small;
+    background-color: #ff0000;
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #a0a0a0;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.topButton {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left:5px;
+    padding: 5px 7px;
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+    font-size: small;
+    background-color: #e7e7e7;
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #a0a0a0;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.sabLabel{
+    padding: 8px 0 0 2px;
+    border-bottom: solid 3px;
+    border-image: linear-gradient(180deg, #000, #fff) 10;
+    font-weight: bold;
+}
+.sidePanelElm{
+    margin-left: 7px;
+}
+.sidePanelvp2{
+    margin-left: 2px;
+}
+
+/*Кнопки Run/Stop, Reset*/
+.run-stop-btn, .reset-btn {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    background: none;
+    border: medium solid;
+    border-radius: 10px;
+}
+
+.run-stop-btn{
+    font-family: 'runstopbtn', serif;
+    right: 50px;
+    color: red;
+    border-color: red;
+    padding: 0;
+    font-size: 30px;
+}
+
+.reset-btn {
+    right: 120px;
+    color: blue;
+    border-color: blue;
+    font-size: 38px;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: #fff !important;
+}
+
+@media (max-width: 1000px) {
+    .run-stop-btn, .reset-btn {
+        width: 6vw;
+        height: 6vw;
+        border-radius: 1vw;
+    }
+    .run-stop-btn{
+        right: 5vw;
+        font-size: 3vw;
+    }
+    .reset-btn{
+        right: 12vw;
+        font-size: 3.8vw;
+    }
+}
+
+/*popups and dialogs on top*/
+.gwt-MenuBarPopup, .gwt-PopupPanel, .gwt-DialogBox {
+    z-index: 2;
+}
+
+app-input-box{
+    display: block;
+   height: 100%;   
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-text-field {
+    padding: 0px;
+}
+
+.mat-form-field{
+    .mat-mdc-form-field-subscript-wrapper{
+        height: 0px !important;
+    }
+}
+
+.mat-input-box{
+    width: 95%;
+    background: #000;
+    .mat-mdc-form-field-subscript-wrapper{
+        height: 0px !important;
+    }
+    .mat-mdc-form-field-infix{
+       padding: 0px !important;
+       min-height: auto !important;
+    }  
+}
+
+

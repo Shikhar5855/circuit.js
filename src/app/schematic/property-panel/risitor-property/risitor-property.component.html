@@ -1,0 +1,18 @@
+<div *ngIf="this.data.length > 0" style="padding: 4px">
+  <form>
+    <div >
+      <div class="input-form">
+        Device Name
+      </div>
+      <div>
+        <app-input-box [(value)]="this.commanProperty.device_name" (valueChange)="updateDeviceName()"></app-input-box>
+      </div>
+    </div>
+    <div *ngFor="let p of this.formData">
+      <div class="input-form">{{ p.name }}</div>
+      <div>
+        <app-input-box [(value)]="p.value" (valueChange)="changeProperty(p.key, p.value)"></app-input-box>
+      </div>
+    </div>
+  </form>
+</div>

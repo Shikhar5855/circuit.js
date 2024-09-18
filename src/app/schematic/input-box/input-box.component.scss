@@ -1,0 +1,41 @@
+.mat-icon.mat-primary {
+    color: #fff
+}
+
+.clr-white{
+    color: #fff;
+}
+.mat-inp{
+    color: #fff !important;
+    border: none;
+    outline-width: 0px;
+}
+.mat-inp:focus{
+    outline: none;
+    outline-width: 0px;
+    border: 0px solid #000;
+}
+.inp-error{
+  color: red;
+  font-size: 12px;
+}
+.example-form {
+    width: 100%;
+    background: #000;
+    &.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: #000 !important;
+      }
+    &.mat-mdc-form-field-infix {
+        min-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    &.mat-mdc-form-field-infix{
+      padding: auto;
+      min-height: auto;
+    }
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }

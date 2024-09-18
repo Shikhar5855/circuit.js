@@ -1,0 +1,13 @@
+<div style="padding: 4px">
+  <form>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Device Name</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.device_name"
+          (valueChange)="updateDeviceName('device_name', this.inpuObj.device_name)"
+        ></app-input-box>
+      </div>
+    </div>
+  </form>
+</div>

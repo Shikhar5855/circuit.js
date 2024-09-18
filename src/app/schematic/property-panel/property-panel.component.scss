@@ -1,0 +1,62 @@
+@import '/src/variable.scss';
+.menu-head {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid $color-black-s;
+  .text:hover {
+    background: $selected-color;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 49%;
+    height: 100%;
+    font-size: 14px;
+    background: $color-black-p;
+    font-family: $font-family-p;
+    color: $color-gray-s;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .icon {
+    height: 20px;
+    width: 20px;
+    padding: 4px;
+    object-fit: contain;
+  }
+}
+
+.tool-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  .box {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    padding: 4px;
+    margin: 0.25rem;
+    border: 1px solid $color-gray-s;
+    background: $color-black-p;
+    .tool-icon {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.input-button {
+  margin-top: 1rem;
+  width: 100%;
+  background: $color-black-p;
+  color: $color-gray-p;
+  border-radius: 0.25rem;
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+<div *ngIf="this.data?.length > 0" style="padding: 4px">
+  <form>
+    <!-- <div class="input-form">Nets/Ports</div> -->
+    <div *ngFor="let p of this.formData">
+      <div>
+        <div class="device_name">
+          <app-input-box [is_undo]="true" [(value)]="p.name" (valueChange)="updatePortName(p)"></app-input-box>
+        </div>
+        <!-- <div class="input-form">Type</div>
+            <div class="device_name" >
+                <select [(ngModel)]="p.wire_type" (change)="updatePortType(p,$event)" style="width: 92%;margin-left: 0.5rem;" [name]="'port_type_'+p.id">
+                    <option [value]="this.port_type.IN">In</option>
+                    <option [value]="this.port_type.OUT">Out</option>
+                    <option [value]="this.port_type.IN_OUT">In-Out</option>
+                    <option [value]="this.port_type.NET">Net</option>
+                    <option [value]="this.port_type.POWER">Power</option>
+                    <option [value]="this.port_type.GROUND">Ground</option>
+
+                </select>
+            </div> -->
+      </div>
+    </div>
+    <div style="padding: 0.25rem; background: #000; margin-top: 0.25rem" *ngFor="let p of this.externalData">
+      <div class="input-form">{{ p.name }}</div>
+      <div class="device_name">
+        <select
+          [(ngModel)]="p.value"
+          (change)="updatePower(p, $event)"
+          style="width: 92%; margin-left: 0.5rem"
+          [name]="'port_type_' + p.name"
+        >
+          <option value="{{ p.key }}">{{ p.key }}</option>
+          <option value="{{ p.key }}i">{{ p.key }}i</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>

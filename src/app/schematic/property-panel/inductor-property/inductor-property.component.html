@@ -1,0 +1,33 @@
+<div style="padding: 4px">
+  <form>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Device Name</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.device_name"
+          (valueChange)="updateDeviceName('device_name', this.inpuObj.device_name)"
+        ></app-input-box>
+      </div>
+    </div>
+
+    <div style="padding: 0.25rem">
+      <div class="input-form">Inductance (H)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.inductor_value"
+          (valueChange)="updateDeviceName('inductor_value', this.inpuObj.inductor_value)"
+        ></app-input-box>
+      </div>
+    </div>
+
+    <div style="padding: 0.25rem">
+      <div class="input-form">Initial Current (on Reset) (A)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.inductor_init_voltage"
+          (valueChange)="updateDeviceName('inductor_init_voltage', this.inpuObj.inductor_init_voltage)"
+        ></app-input-box>
+      </div>
+    </div>
+  </form>
+</div>

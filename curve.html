@@ -1,0 +1,173 @@
+<html>
+    <head>
+        <script src="./dump.js"></script>
+        <script></script>
+    </head>
+    <body>
+    	<canvas id="myCanvas" width="1200" height="700" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+    	<script>
+    		var cv = document.getElementById("myCanvas");
+    		var ctx = cv.getContext("2d");
+    		function gradient(a, b) {
+    			return (b.y-a.y)/(b.x-a.x);
+    		}
+    
+    		function bzCurve(points, f, t) {
+    			//f = 0, will be straight line
+    			//t suppose to be 1, but changing the value can control the smoothness too
+    			if (typeof(f) == 'undefined') f = 0.3;
+    			if (typeof(t) == 'undefined') t = 0.6;
+    
+    			ctx.beginPath();
+    			ctx.moveTo(points[0].x, points[0].y);
+    
+    			var m = 0;
+    			var dx1 = 0;
+    			var dy1 = 0;
+    
+    			var preP = points[0];
+    			for (var i = 1; i < points.length; i++) {
+    				var curP = points[i];
+    				nexP = points[i + 1];
+    				if (nexP) {
+    					m = gradient(preP, nexP);
+    					dx2 = (nexP.x - curP.x) * -f;
+    					dy2 = dx2 * m * t;
+    				} else {
+    					dx2 = 0;
+    					dy2 = 0;
+    				}
+    				ctx.bezierCurveTo(preP.x - dx1, preP.y - dy1, curP.x + dx2, curP.y + dy2, curP.x, curP.y);
+    				dx1 = dx2;
+    				dy1 = dy2;
+    				preP = curP;
+    			}
+    			ctx.stroke();
+    		}
+    
+    		// Generate random data
+    		var lines = [];
+    		var X = 10;
+    		var t = 40; //to control width of X
+    		for (var i = 0; i < 100; i++ ) {
+    			Y = Math.floor((Math.random() * 300) + 50);
+    			p = { x: X, y: Y };
+    			lines.push(p);
+    			X = X + t;
+    		}
+    
+    		// //draw straight line
+    		// ctx.beginPath();
+    		// ctx.setLineDash([5]);
+    		// ctx.lineWidth = 1;
+    		// bzCurve(lines, 0, 1);
+    
+    		// //draw smooth line
+    		// ctx.setLineDash([0]);
+    		// ctx.lineWidth = 2;
+    		// ctx.strokeStyle = "blue";
+    		// bzCurve(lines, 0.2, 1);
+    	</script>
+        <script>
+
+
+function convertIntoPoint(col,data,totalD,color="blue"){
+    // const maxD=Math.max(...data);
+    // const minD=Math.min(...data);
+    // const maxC=Math.max(...col);
+    // const minC=Math.min(...col);
+    // const totalD=Math.abs(maxD-minD);
+    const totalC= col.length //Math.abs(maxC-minC);
+
+    const stepD=500/totalD;
+	const stepC=parseInt((totalC/1000)+"")
+	const points=[];
+	let lastVal=null;
+	let count=0;
+	let obj={};
+	let isUp=false;
+	for(let i=0;i<1000;i++){
+		const x= i;
+        const y=300-Math.round(data[stepC*i]*stepD);
+        points.push({x,y,xo:(stepC*i),yo:data[stepC*i]});	
+	}
+	// if(data.length>2){
+	// 	points.push({i:0,y:(stepD*data[0]),d:data[0]})
+	// 	for(let i=1;i<data.length;i++){
+           
+	//     }
+
+	// }
+
+	// data.forEach((d,i)=>{
+	// 	if(i==0 || i == data.length-1){
+	// 		points.push({i,y:(stepD*d),d})
+	// 	}
+	// 	else if(d<lastVal){
+
+	// 	}
+	// 	lastVal=d;
+
+    // //   if(lastVal!=d){
+	// // 	lastVal=d;
+	// // 	const x=count++;
+    // //     const y=d*stepD;
+    // //     points.push({x,y,xo:col[i],yo:d});
+	// //   }
+	// })
+    // const points=col.map((d,i)=>{
+        // const x=(d*stepC)-50;
+        // const y=data[i]*stepD;
+        // return {x,y,xo:d,yo:data[i]};
+    // })
+    console.log(data,points);
+    ctx.setLineDash([0]);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = color;
+    bzCurve(points, 0.2, 1);
+}
+
+ function convertIntoTime(n) {
+    return Math.round(n*1000000);
+  }
+  function getTotalD([c,...da]){
+      let totald=-1;
+	  da.forEach((d)=>{
+	    const maxD=Math.max(...d);
+        const minD=Math.min(...d);
+        const totalD=Math.abs(maxD-minD);
+		if(totald<totalD){
+			totald=totalD
+		}
+	  })
+	  return totald;
+  }
+let drawGraph = ({ col, data }) => {
+    let obj = [];
+    col.forEach((k) => {
+      obj.push([]);
+    });
+    data.forEach((dd) => {
+      dd.forEach((cc, i) => {
+        if (i == 0) {
+          const num = parseFloat(cc);
+          obj[i].push(this.convertIntoTime(num));
+        } else {
+          const num = parseFloat(cc);
+          obj[i].push(num);
+        }
+      });
+    });
+	const totalD=getTotalD([[],obj[3]]);
+    // convertIntoPoint(obj[0],obj[1],totalD,"red")
+	// convertIntoPoint(obj[0],obj[2],totalD,"blue")
+	///convertIntoPoint(obj[0],obj[3],totalD,"green")
+
+   // console.log('sim result==>', Math.min(...obj[3]));
+
+  };
+  //console.log(data)
+  drawGraph(data.data)
+        </script>
+    </body>
+    </html>

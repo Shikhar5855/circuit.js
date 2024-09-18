@@ -1,0 +1,13 @@
+<p class="example-form">
+<mat-form-field class="mat-input-box" style="background: #000;padding: 0.5rem 0.25rem;" appearance="outline">
+  <input #input_ele class="mat-inp" matInput (keyup)="keyUpEvent($event)" (change)="valChange($event)"/>
+  <div class="inp-error" *ngIf="error">{{error}}</div>
+</mat-form-field>
+</p>
+<!-- <form class="example-form"> -->
+<!-- <p class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+</mat-form-field> 
+</p> -->

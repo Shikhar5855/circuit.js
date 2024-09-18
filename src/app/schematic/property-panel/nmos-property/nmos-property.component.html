@@ -1,0 +1,51 @@
+<div style="padding: 4px">
+  <form>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Device Name</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.device_name"
+          (valueChange)="updateDeviceName('device_name', this.inpuObj.device_name)"
+        ></app-input-box>
+      </div>
+    </div>
+
+    <div style="padding: 0.25rem">
+      <div class="input-form">Threshold Voltage</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.mosfet_threshold_voltage"
+          (valueChange)="updateDeviceName('mosfet_threshold_voltage', this.inpuObj.mosfet_threshold_voltage)"
+        ></app-input-box>
+      </div>
+    </div>
+
+    <div style="padding: 0.25rem">
+      <div class="input-form">Width (w)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_width"
+          (valueChange)="updateDeviceName('transistor_width', this.inpuObj.transistor_width)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Length (l)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_length"
+          (valueChange)="updateDeviceName('transistor_length', this.inpuObj.transistor_length)"
+        ></app-input-box>
+      </div>
+    </div>
+    <div style="padding: 0.25rem">
+      <div class="input-form">Multiplier (m)</div>
+      <div>
+        <app-input-box
+          [(value)]="this.inpuObj.transistor_multiplier"
+          (valueChange)="updateDeviceName('transistor_multiplier', this.inpuObj.transistor_multiplier)"
+        ></app-input-box>
+      </div>
+    </div>
+  </form>
+</div>

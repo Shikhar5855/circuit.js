@@ -1,0 +1,88 @@
+<div class="menu-head">
+  <!-- <div class="text"><span>Passive</span></div> -->
+  <!-- <img class="icon" src="/assets/img/3_line.svg"/> -->
+</div>
+
+<div class="tool-container">
+  <div class="box" [class]="cmd.RESISTOR.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.RESISTOR)">
+    <img mat-raised-button matTooltip="Resistor" class="tool-icon" src="/assets/img/icon_resistor.png" />
+  </div>
+  <div class="box" [class]="cmd.CAPACITOR.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.CAPACITOR)">
+    <img mat-raised-button matTooltip="Capacitor"  class="tool-icon" src="/assets/img/icon_capacitor.png" />
+  </div>
+  <div class="box" [class]="cmd.INDUCTOR.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.INDUCTOR)">
+    <img mat-raised-button matTooltip="Inductor"  class="tool-icon" src="/assets/img/icon_inductor.png" />
+  </div>
+  <div class="box" [class]="cmd.DC_VOLTAGE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.DC_VOLTAGE)">
+    <img mat-raised-button matTooltip="Voltage Source" class="tool-icon" src="/assets/img/icon_battery.png" />
+  </div>
+  <div class="box" [class]="cmd.WIRE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.WIRE)">
+    <img mat-raised-button matTooltip="Wire" class="tool-icon" src="/assets/img/icon_wire.png" />
+  </div>
+  <div class="box" [class]="cmd.IO_PORT.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.IO_PORT)">
+    <div mat-raised-button matTooltip="IO" class="tool-text">IO</div>
+  </div>
+</div>
+
+<div class="menu-head">
+  <!-- <div class="text"><span>Active</span></div> -->
+</div>
+
+<div class="tool-container">
+  <div class="box" [class]="cmd.NPN.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.NPN)">
+    <img mat-raised-button matTooltip="NPN" class="tool-icon" src="/assets/img/NPN.png" />
+  </div>
+  <div class="box" [class]="cmd.PNP.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.PNP)">
+    <img mat-raised-button matTooltip="PNP" class="tool-icon" src="/assets/img/PNP.png" />
+  </div>
+  <div class="box" [class]="cmd.NMOS.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.NMOS)">
+    <img mat-raised-button matTooltip="NMOS"  class="tool-icon" src="/assets/img/nmos.png" />
+  </div>
+  <div class="box" [class]="cmd.PMOS.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.PMOS)">
+    <img mat-raised-button matTooltip="PMOS"  class="tool-icon" src="/assets/img/pmos.png" />
+  </div>
+  <div class="box" [class]="cmd.DAIOD.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.DAIOD)">
+    <img mat-raised-button matTooltip="Diode" class="tool-icon" src="/assets/img/diode.png" />
+  </div>
+</div>
+
+<div class="menu-head">
+  <!-- <div class="text"><span>Logic Gate</span></div> -->
+</div>
+<div class="tool-container">
+  <div class="box" [class]="cmd.INVERTER.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.INVERTER)">
+    <img mat-raised-button matTooltip="NOT Gate"  class="tool-icon" src="/assets/img/not.png" />
+  </div>
+  <div class="box" [class]="cmd.AND_GATE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.AND_GATE)">
+    <img mat-raised-button matTooltip="AND Gate" class="tool-icon" src="/assets/img/and.png" />
+  </div>
+  <div class="box" [class]="cmd.OR_GATE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.OR_GATE)">
+    <img mat-raised-button matTooltip="OR Gate" class="tool-icon" src="/assets/img/or.png" />
+  </div>
+  <div class="box" [class]="cmd.NAND_GATE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.NAND_GATE)">
+    <img mat-raised-button matTooltip="NAND Gate" class="tool-icon" src="/assets/img/nand.png" />
+  </div>
+  <div class="box" [class]="cmd.NOR_GATE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.NOR_GATE)">
+    <img mat-raised-button matTooltip="NOR Gate" class="tool-icon" src="/assets/img/nor.png" />
+  </div>
+  <div class="box" [class]="cmd.XOR_GATE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.XOR_GATE)">
+    <img mat-raised-button matTooltip="XOR Gate" class="tool-icon" src="/assets/img/xor.png" />
+  </div>
+</div>
+
+<div class="menu-head">
+  <!-- <div class="text"><span>Others</span></div> -->
+</div>
+<div class="tool-container">
+  <span *ngFor="let s of subCirLis;" class="a-link" href="#" (click)="openSubCir(s)" target="_blank">{{s.cell_name}}</span>
+
+  <!-- <div class="box" [class]="cmd.CLOCK.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.CLOCK)">
+    <img class="tool-icon" src="/assets/img/icon_currentsource.png" />
+  </div>
+  <div class="box" [class]="cmd.AC_VOLTAGE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.AC_VOLTAGE)">
+    <img class="tool-icon" src="/assets/img/icon_voltagesource.png" />
+  </div>
+  <div class="box" [class]="cmd.WIRE.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.WIRE)">
+    <img class="tool-icon" src="/assets/img/icon_wire.png" />
+  </div> -->
+</div>
