@@ -74,8 +74,10 @@
   <!-- <div class="text"><span>Others</span></div> -->
 </div>
 <div class="tool-container">
-  <span *ngFor="let s of subCirLis;" class="a-link" href="#" (click)="openSubCir(s)" target="_blank">{{s.cell_name}}</span>
-
+  <span *ngFor="let s of subCirLis;" class="a-link" href="#" (click)="openSubCir(s.cell_name)" target="_blank">
+    {{s.cell_name}}
+  </span>
+  
   <!-- <div class="box" [class]="cmd.CLOCK.isSelected ? 'item-seleted' : ''" (click)="addDevice(cmd.CLOCK)">
     <img class="tool-icon" src="/assets/img/icon_currentsource.png" />
   </div>

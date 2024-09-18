@@ -105,46 +105,87 @@ export class TopMenuComponent {
        this.handleActivity();
     })
   }
-  openDialog(type:string): void {
+  openDialog(type: string): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {cell_name: DeviceInfo.cell_name, id:DeviceInfo.id,type},
+      data: { cell_name: DeviceInfo.cell_name, id: DeviceInfo.id, type },
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed',result);
-      if(result && result.type=="save_cell"){
-        const {id,cell_name}=result;
-        DeviceInfo.id=id;
-        DeviceInfo.cell_name=cell_name;
-        
-        const item:DeviceComponent=getDeviceToCircuitObj();
-        item.id=DeviceInfo.id+"";
-        item.cell_name=cell_name;
-        if(DeviceInfo.id){
-          DeviceCurd.updateItem(item);
+      console.log('The dialog was closed', result);
+  
+      // Fetch the circuitRecovery data from localStorage
+      const circuitRecoveryData = localStorage.getItem('circuitRecovery');
+      let recoveryData = {};
+  
+      if (circuitRecoveryData) {
+        // Log the raw data for inspection
+        console.log('Raw circuitRecoveryData:', circuitRecoveryData);
+  
+        // Remove leading $ sign and any non-JSON characters
+        let cleanedData = circuitRecoveryData.startsWith('$') 
+          ? circuitRecoveryData.substring(1)
+          : circuitRecoveryData;
+  
+        // Since it appears to be text data rather than JSON,
+        // You may need to convert it into a suitable format or structure
+        // For example, if it's a space-separated string, split it or process as needed
+  
+        cleanedData = cleanedData.trim(); // Remove leading/trailing whitespace
+  
+        // Log cleaned data for further inspection
+        console.log('Cleaned circuitRecoveryData:', cleanedData);
+  
+        // Process the data based on its intended format
+        // Here, we assume it should be treated as plain text or another format
+        // You might need to convert or parse this data into a usable structure
+        try {
+          // Example: if it's meant to be a text blob or needs specific processing
+          recoveryData = { rawText: cleanedData }; // Or use suitable processing
+        } catch (error) {
+          console.error('Error processing circuitRecovery data:', error);
+          recoveryData = {}; // Set to empty object if processing fails
         }
-        else{
-          item.id=new Date().getTime().toString();
+      }
+  
+      if (result && result.type === "save_cell") {
+        const { id, cell_name } = result;
+        DeviceInfo.id = id;
+        DeviceInfo.cell_name = cell_name;
+  
+        const item: DeviceComponent = getDeviceToCircuitObj();
+        item.id = DeviceInfo.id + "";
+        item.cell_name = cell_name;
+        if (DeviceInfo.id) {
+          DeviceCurd.updateItem(item);
+        } else {
+          item.id = new Date().getTime().toString();
           DeviceCurd.addItem(item);
         }
-      }
-      else if(result && result.type=="only_cell_name"){
-        const {cell_name}=result;
-        DeviceInfo.cell_name=cell_name;
-        this.getNetlistDataWithFileName()
-      }
-      else if(result && result.type=="clear"){
-        UndoRedo.redo=[];
-        UndoRedo.undo=[];
+      } else if (result && result.type === "only_cell_name") {
+        const { cell_name } = result;
+        DeviceInfo.cell_name = cell_name;
+        this.getNetlistDataWithFileName();
+      } else if (result && result.type === "clear") {
+        UndoRedo.redo = [];
+        UndoRedo.undo = [];
         this.blankCanvas();
         DeviceDetail.callDeviceChanges();
-       this.isDeviceSeleted=false;
-        // setTimeout(()=>{
+        this.isDeviceSeleted = false;
+        // setTimeout(() => {
         //   this.handleActivity();
-        // },200)
+        // }, 200);
       }
+  
+      // Combine recoveryData with the current circuit data
+      const circuitData = { /* your circuit data here */ };
+      const combinedData = { ...circuitData, ...recoveryData };
+  
+      // Save the combined data back to localStorage or handle it as needed
+      localStorage.setItem('combinedCircuitData', JSON.stringify(combinedData));
+      console.log('Combined data saved:', combinedData);
     });
   }
+  
   addDevice(d: Command) {
     CircuitJS1.menuPerformed(d.name, d.value);
     selectItem(d);
