@@ -3,7 +3,6 @@
 .bg-dark {
   border: 1px solid $color-black-p;
 }
-
 .top-tool {
   height: 100%;
   display: flex;
@@ -60,4 +59,18 @@
       }
     }
   }
+}
+textarea{
+  width: 210px;
+  background-color: black;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: white;
+  /* text-decoration-color: black; */
+}
+.upload-btns{
+  background-color: black;
+  height: 100% !important;
 }

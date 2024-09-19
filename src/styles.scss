@@ -9,7 +9,22 @@ body{
     margin: 0;
     padding: 0;
 }
-
+.upload-btns{
+    background-color: black;
+    height: 100%;
+}
+.bi-upload{
+display: none !important;
+}
+textarea {
+    background-color: black !important;
+    height: 100% !important;
+    padding: 0;
+    margin: 1px;
+    border: 0;
+    color: white;
+    /* text-decoration-color: black; */
+}
 .item-seleted{
     background: $selected-color !important;
 }
